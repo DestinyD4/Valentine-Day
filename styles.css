@@ -1,0 +1,159 @@
+/* Отключение прокрутки при открытом модальном окне */
+.no-scroll {
+    overflow: hidden;
+    height: 100vh;
+    /* фиксируем высоту */
+    /* На iOS может понадобиться дополнительные хаки для полной фиксации */
+}
+
+body {
+    background-color: #0d0d0d;
+    color: #fff;
+    text-align: center;
+    font-family: 'Dancing Script', cursive;
+    overflow: hidden;
+    /* изначально скрываем лишнюю прокрутку */
+    position: relative;
+    margin: 0;
+    /* убираем отступы */
+    padding: 0;
+}
+
+/* Мерцающий фон без "движения" */
+.neon-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(255, 0, 150, 0.5), transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+    animation: neonPulse 2s infinite alternate;
+}
+
+/* Убрали transform: scale, оставили лишь изменение opacity */
+@keyframes neonPulse {
+    from {
+        opacity: 0.6;
+    }
+
+    to {
+        opacity: 0.9;
+    }
+}
+
+/* Кнопки с сердечками */
+.btn {
+    background: #ff0080;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px #ff0080;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    box-shadow: 0 0 30px #ff0080;
+}
+
+/* Общие стили для обоих модальных окон */
+.modal-content,
+.message-modal {
+    background: #222;
+    padding: 20px;
+    border-radius: 10px;
+    /* Неоновая обводка через CSS-переменную --neon-color */
+    box-shadow: 0 0 20px var(--neon-color, #ff0080);
+    text-align: center;
+}
+
+/* Поле ввода — делаем фон тёмным и текст белым */
+.input {
+    background-color: #222;
+    color: #fff;
+    border: 1px solid #fff;
+    /* тонкая белая рамка для наглядности */
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    width: 80%;
+    text-align: center;
+}
+
+/* Кнопки внутри модального окна */
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.icon-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #ff0080;
+}
+
+.icon-button:hover {
+    color: #ff66b2;
+}
+
+/* Изменяем только интенсивность свечения (альфа), без изменения размера */
+.neon-border {
+    position: relative;
+    box-shadow: 0 0 20px var(--neon-color, rgba(255, 0, 255, 0.5));
+    animation: neon-border-animation 2s infinite alternate;
+}
+
+@keyframes neon-border-animation {
+
+    0%,
+    100% {
+        box-shadow: 0 0 20px var(--neon-color, rgba(255, 0, 255, 0.3));
+    }
+
+    50% {
+        box-shadow: 0 0 20px var(--neon-color, rgba(255, 0, 255, 1));
+    }
+}
+
+/* Неоновый текст (белый, но со свечением) */
+.neon-text {
+    color: #fff;
+    /* основной цвет текста */
+    text-shadow:
+        0 0 5px var(--neon-color, #ff0080),
+        0 0 10px var(--neon-color, #ff0080),
+        0 0 15px var(--neon-color, #ff0080),
+        0 0 20px var(--neon-color, #ff0080);
+    animation: neon-text-flicker 2.0s infinite alternate;
+}
+
+@keyframes neon-text-flicker {
+    from {
+        text-shadow:
+            0 0 5px var(--neon-color, #ff0080),
+            0 0 10px var(--neon-color, #ff0080),
+            0 0 15px var(--neon-color, #ff0080),
+            0 0 20px var(--neon-color, #ff0080);
+    }
+
+    to {
+        text-shadow:
+            0 0 10px var(--neon-color, #ff0080),
+            0 0 15px var(--neon-color, #ff0080),
+            0 0 20px var(--neon-color, #ff0080),
+            0 0 30px var(--neon-color, #ff0080);
+    }
+}
+
+/* Неоновая рамка для видео (только мерцает по альфе, не смещая объект) */
+.neon-video-border {
+    box-shadow: 0 0 15px var(--neon-color, rgba(255, 0, 255, 0.7));
+    border-radius: 8px;
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сюрприз на 14 февраля</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts (пример с Dancing Script) -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet" />
+
+    <!-- Подключение собственных стилей -->
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="flex flex-col items-center justify-center min-h-screen">
+    <div class="neon-animation"></div>
+    <h1 class="text-5xl font-extrabold mb-12 text-white drop-shadow-lg neon-text text-center">
+        Сюрприз на 14 февраля
+    </h1>
+
+    <div class="grid grid-cols-3 gap-6 md:gap-12 max-w-lg mx-auto place-items-center">
+        <button class="btn text-2xl py-8 px-10 w-24 h-24 flex items-center justify-center" onclick="openModal(1)"> Clever</button>
+        <button class="btn text-2xl py-8 px-10 w-24 h-24 flex items-center justify-center" onclick="openModal(2)"> Akira</button>
+        <button class="btn text-2xl py-8 px-10 w-24 h-24 flex items-center justify-center" onclick="openModal(3)"> Set</button>
+        <button class="btn text-2xl py-8 px-10 w-24 h-24 flex items-center justify-center" onclick="openModal(4)"> Wicher</button>
+        <button class="btn text-2xl py-8 px-10 w-24 h-24 flex items-center justify-center" onclick="openModal(5)">Kotmy</button>
+        <button class="btn text-2xl py-8 px-10 w-24 h-24 flex items-center justify-center" onclick="openModal(6)">Lika</button>
+        <button class="btn text-2xl py-8 px-10 w-24 h-24 flex items-center justify-center" onclick="openModal(7)">Ramona</button>
+        <button class="btn text-2xl py-8 px-10 w-24 h-24 flex items-center justify-center" onclick="openModal(8)">Ursa</button>
+        <button class="btn text-2xl py-8 px-10 w-24 h-24 flex items-center justify-center" onclick="openModal(9)">Delir</button>
+    </div>
+
+    <!-- Модальное окно для ввода ключевого слова -->
+    <div id="modal" class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+        <div class="modal-content">
+            <p id="question" class="text-lg">Введите ключевое слово:</p>
+            <input type="text" id="answer" class="input" />
+            <div class="modal-buttons">
+                <button class="icon-button" onclick="checkAnswer()">✔️</button>
+                <button class="icon-button" onclick="closeModal()">❌</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно с сообщением и видео -->
+    <div id="messageModal" class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-70">
+        <div class="message-modal p-6 bg-gray-900 rounded-lg max-w-2xl text-center neon-border">
+            <!-- Заголовок письма — делаем белым -->
+            <h2 class="text-3xl font-bold text-white mb-4 neon-text">
+                💌 Валентинка от Лэссора 💌
+            </h2>
+            <p id="messageContent" class="text-lg font-semibold text-white mb-4"></p>
+            <div class="overflow-hidden rounded-lg shadow-lg neon-video-border">
+                <video id="messageVideo" class="w-full rounded-lg" controls>
+                    <source src="" type="video/mp4" />
+                    Ваш браузер не поддерживает видео.
+                </video>
+            </div>
+            <button class="mt-6 text-red-400 text-2xl transition transform hover:scale-110" onclick="closeMessage()">
+                ❌ Закрыть
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
